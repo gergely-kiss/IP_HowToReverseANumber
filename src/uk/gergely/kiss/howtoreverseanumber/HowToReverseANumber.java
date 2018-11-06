@@ -1,5 +1,7 @@
 package uk.gergely.kiss.howtoreverseanumber;
 
+import uk.gergely.kiss.howtoreverseanumber.utils.PrintUtil;
+
 public class HowToReverseANumber {
 	public static void main(String[] args) {
 		int test1 = 12345;
@@ -8,45 +10,28 @@ public class HowToReverseANumber {
 		int test4 = 111000;
 		int test5 = -230000400;
 
-		printTest(test1);
-		printTest(test2);
-		printTest(test3);
-		printTest(test4);
-		printTest(test5);
-	}
+		PrintUtil.printTestIntToString(test1);
+		PrintUtil.printTestIntToString(test2);
+		PrintUtil.printTestIntToString(test3);
+		PrintUtil.printTestIntToString(test4);
+		PrintUtil.printTestIntToString(test5);
 
-	public static String reverseNumber(int input) {
+		PrintUtil.printTestIntToInt(test1);
+		PrintUtil.printTestIntToInt(test2);
+		PrintUtil.printTestIntToInt(test3);
+		PrintUtil.printTestIntToInt(test4);
+		PrintUtil.printTestIntToInt(test5);
 
-		boolean isNegative = input < 0;
-		input = isNegative ? -input : input;
-		int reveresedInput = 0;
-		int zeroEndingDigits = 0;
-		boolean justZerosUntilThis = true;
-		while (input > 0) {
+		PrintUtil.printTestIntToIntRecursive(test1);
+		PrintUtil.printTestIntToIntRecursive(test2);
+		PrintUtil.printTestIntToIntRecursive(test3);
+		PrintUtil.printTestIntToIntRecursive(test4);
+		PrintUtil.printTestIntToIntRecursive(test5);
 
-			if (input % 10 == 0 && justZerosUntilThis) {
-				zeroEndingDigits++;
-				justZerosUntilThis = (input / 10) % 10 == 0;
-			}
-			reveresedInput = (reveresedInput * 10) + input % 10;
-			input /= 10;
-		}
-
-		String reverseInputString = zeroEndingDigits > 0 ? addZerosToTheBegin(zeroEndingDigits, reveresedInput)
-				: String.valueOf(reveresedInput);
-		reverseInputString = isNegative ? reverseInputString + "-" : reverseInputString;
-		return reverseInputString;
-	}
-
-	private static String addZerosToTheBegin(int zeroEndingDigits, int reveresedInput) {
-		String reveresedInputString = "0";
-		for (int i = 0; i < zeroEndingDigits - 1; i++) {
-			reveresedInputString += "0";
-		}
-		return reveresedInputString + reveresedInput;
-	}
-
-	private static void printTest(int testCase) {
-		System.out.println("The input is: " + testCase + ". The reverse of that is: " + reverseNumber(testCase));
+		PrintUtil.printTestRecursiveReverse(test1);
+		PrintUtil.printTestRecursiveReverse(test2);
+		PrintUtil.printTestRecursiveReverse(test3);
+		PrintUtil.printTestRecursiveReverse(test4);
+		PrintUtil.printTestRecursiveReverse(test5);
 	}
 }
